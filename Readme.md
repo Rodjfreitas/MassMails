@@ -95,7 +95,7 @@ Buscando a evolução contínua, procurei informações para aplicar uma interfa
 Inicialmente havia me deparado com o Tkinter, uma biblioteca com essa finalidade, mas que por falta de tempo para exploração e conhecimento, inicialmente foi descartada. 
 
 Me deparei então com a biblioteca PySimpleGUI. Simplesmente Fantástica. 
-Intuitiva, de facil aprendizado e manuzeio, me familiarizei desde o princípio. 
+Intuitiva, de facil aprendizado e manuseio, me familiarizei desde o princípio. 
 
 Eis o resultado obtido através dela (criei dois temas distintos, apenas para testes):
 
@@ -109,7 +109,7 @@ Eis o resultado obtido através dela (criei dois temas distintos, apenas para te
 ![image](https://user-images.githubusercontent.com/119018022/232166004-10468736-4c1c-4a99-92d9-800a5ea2accd.png)
 
 
-Diferente da v1.0, esta versão eu acrescen a opção de escolha de servidor de e-mail. A primeira versão era habilitada apenas para Gmail, esta segunda, inclui no código as opções de escolhas para outlook e yahoo, outros dois serviços bastante utilizados atualmente.
+Diferente da v1.0, esta versão eu acrescentei a opção de escolha de servidor de e-mail. A primeira versão era habilitada apenas para Gmail, esta segunda, inclui no código as opções de escolhas para outlook e yahoo, outros dois serviços bastante utilizados atualmente.
 
 O processo com a interface gráfica se apresnta bem mais simples, com o usuário podendo inserir as informações de forma mais rápida e intuitiva para encaminhamento de e-mail. Neste caso, houve mudança da planilha, uma vez que o assunto do e-mail não é mais inserido na planilha, e sim no programa.
 
@@ -145,6 +145,9 @@ Após clicar em ok, é emitido um relatório que é salvo na pasta do programa, 
 
 
 ![image](https://user-images.githubusercontent.com/119018022/232168611-cecc10bd-93d1-4720-b5f0-13fb848e214b.png)
+
+
+![image](https://user-images.githubusercontent.com/119018022/232171028-83d977e9-995f-49d4-9ad9-a959743846f6.png)
 
 
 
