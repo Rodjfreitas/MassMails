@@ -86,7 +86,7 @@ class TelaPython:
                     continue
                 nome = valor[0]
                 assunto = f'{assunto_email} - {nome}'
-                conteudo = f'{dados.saudacao()},\n{conteudo_email}'
+                conteudo = f'{dados.saudacao()},\n\n{conteudo_email}'
                 email = valor[1]
                 anexo = f'{local_pasta}\\{nome}'
                 retorno_envio = dados.enviarEmail(usuario_email, senha_usuario_email, assunto,
