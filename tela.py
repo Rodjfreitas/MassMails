@@ -6,7 +6,7 @@ qtd_contagem = 0
 
 class TelaPython:
     def __init__(self):
-        sg.change_look_and_feel('DarkBrown4')
+        sg.change_look_and_feel('DarkEmber')
         input_size = (54, None)
         text_size = (20, None)
         # Layout
@@ -31,20 +31,19 @@ class TelaPython:
             [sg.Text('Com Cópia', size=text_size, justification='right'),
              sg.Input(size=input_size, key='cc')],
             # Conteúdo do Email
+            [sg.Text('Assunto', justification='left')],
             [sg.Multiline(size=(60, 10), font=('Helvetica', 12),
                           key='conteudo', border_width=2)],
-            # Barra de Progresso
-            [sg.ProgressBar(qtd_contagem, orientation='h', size=(
-                20, 20), key='progressbar', bar_color='gray', visible=False)],
             # Botão de Envio
             [sg.Button('Disparar E-mails', size=33, key='disparar_emails'),
              sg.Button('Emitir Relatório', size=33, disabled=True)],
             # Tela de Impressão
+            [sg.Text('Retorno')],
             [sg.Output(size=(77, 5))],
             [sg.Text('Desenvolvido por Rodrigo Freitas', size=65, justification='center')]]
         # Janela
         self.janela = sg.Window(
-            'Mass&Mails v2.0 - Disparador Massivo de E-mails').layout(layout)
+            'Mass&Mails v2.1 - Disparador Massivo de E-mails').layout(layout)
 
     def Iniciar(self):
         while True:
@@ -81,10 +80,8 @@ class TelaPython:
             email_enviados = []
             relacao_a_enviar = dados.buscarnoArquivo(local_arquivo)
 
-            # Habilita a barra de progresso
-            self.janela['progressbar'].update(0)
+            
             for pos, valor in enumerate(relacao_a_enviar):
-                event, values = self.janela.read(timeout=10)
                 if pos == 0:
                     continue
                 nome = valor[0]
@@ -98,16 +95,13 @@ class TelaPython:
                     sg.popup('Erro', 'Verificar dados do Login.')
                     status = False
                     break
-                else:
-                    status = True
-                    email_enviados.append(retorno_envio)
-                    assunto = ''
-                    self.janela['progressbar'].update(pos + 1)
-            self.janela['progressbar'].update(0)
+                status = True
+                email_enviados.append(retorno_envio)
+                assunto = ''
             if status:
-                sg.popup_ok('Sucesso', 'Processo de Envio Concluído.')
                 # Salvar relatório de envios no diretório
                 dados.salvanoArquivo(email_enviados)
+                sg.popup_ok('Sucesso', 'Processo de Envio Concluído.')                
                 continue
 
 
