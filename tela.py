@@ -135,7 +135,7 @@ while True:
             # Salvar relatório de envios no diretório
             dados.salvanoArquivo(email_enviados)
             janela3.hide()
-            sg.popup_ok('Sucesso', 'Processo de Envio Concluído.')               
+            sg.popup_ok('Sucesso', 'Processo de Envio Concluído.', 'Salvo um relatório na pasta do programa.')               
             continue
     # Consultar itens à enviar
     if window == janela1 and event == 'Itens à Enviar':
