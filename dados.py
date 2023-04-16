@@ -162,10 +162,10 @@ def imprimirLista(lista):
         try:
             if pos == 0:
                 print(
-                    f'{valor[0]:<46}{valor[1]:<30}{valor[2]:<60}')
+                    f'{valor[0]:^46}{valor[1]:^60}')
                 continue
             print(
-                f'{pos:<3} - {valor[0]:<40}{valor[1]:<30}{valor[2]:<60}')
+                f'{pos:<3} - {valor[0]:<40}{valor[1]:^60}')
         except:
             print(
                 f'{pos:<3} - IMPORTANTE: Revise os dados de {valor[0]} na planilha origem.\n')
