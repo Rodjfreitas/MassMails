@@ -15,7 +15,7 @@ def janelaPrincipal():
     # Layout
     layout = [
         # Selecionar o Arquivo
-        [sg.Text('Selecione o Arquivo**', size=text_size, justification='right'), sg.FileBrowse('Pesquisar',
+        [sg.Text('Selecionar Arquivo**', size=text_size, justification='right'), sg.FileBrowse('Pesquisar',
                 target='arquivo'), sg.InputText(key='arquivo', size=(43, None))],
         # Selecionar a Pasta
         [sg.Text('Selecionar Diretório**', size=text_size, justification='right'), sg.FolderBrowse('Pesquisar',
