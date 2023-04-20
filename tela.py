@@ -14,6 +14,8 @@ def janelaPrincipal():
     text_size = (20, None)
     # Layout
     layout = [
+        # Possui anexo
+        [sg.Text('Possui Anexo**', size=text_size, justification='right'), sg.Radio('Sim', 'anexo', key='anexosim', default=True), sg.Radio('Não', 'anexo', key='anexonao')],
         # Selecionar o Arquivo
         [sg.Text('Selecionar Arquivo**', size=text_size, justification='right'), sg.FileBrowse('Pesquisar',
                 target='arquivo'), sg.InputText(key='arquivo', size=(43, None))],
@@ -22,7 +24,7 @@ def janelaPrincipal():
                 target='pasta'), sg.InputText(key='pasta', size=(43, None))],
         # Provedor
         [sg.Text('Provedor de E-mail**', size=text_size, justification='right'),
-             sg.Radio('Gmail', 'provedor', key='gmail'), sg.Radio('Outlook', 'provedor', key='outlook'), sg.Radio('Yahoo', 'provedor', key='yahoo')],
+             sg.Radio('Gmail', 'provedor', key='gmail', default=True), sg.Radio('Outlook', 'provedor', key='outlook'), sg.Radio('Yahoo', 'provedor', key='yahoo')],
         # Login e Senha
         [sg.Text('Usuário**', size=text_size, justification='right'),
              sg.Input(size=input_size, key='usuario')],
@@ -93,12 +95,19 @@ while True:
         servidor_gmail = values['gmail']
         servidor_outlook = values['outlook']
         servidor_yahoo = values['yahoo']
+        anexo_sim = values['anexosim']
+        anexo_nao = values['anexonao']
         # Verificar se existe campos não preenchidos
         if usuario_email == "" or senha_usuario_email == "" or assunto_email == "" or conteudo_email == "":
             sg.popup('ATENÇÃO', 'Preenchimento de todos os campos obrigatórios')
             continue
         # Abrir janela de progresso
         janela3 = janelaprogresso()
+        # Verifica se tem anexo:
+        if anexo_sim:
+            anexar = 'sim'
+        if anexo_nao:
+            anexar = 'nao'
         # Verificar qual servidor será usado
         if servidor_gmail:
             servidor = 'smtp.gmail.com'
@@ -122,7 +131,7 @@ while True:
             email = valor[1]
             anexo = f'{local_pasta}\\{nome}'
             retorno_envio = dados.enviarEmail(usuario_email, senha_usuario_email, assunto,
-                                            email, com_copia, conteudo, anexo, nome, servidor)
+                                            email, com_copia, conteudo, anexo, nome, servidor, anexar)
             if retorno_envio == 'Erro':
                 sg.popup('ATENÇÃO', 'Verificar dados do Login.')
                 janela3.close()

@@ -1,4 +1,4 @@
-def enviarEmail(usuario, senha_usuario, assunto, destinatario, com_copia, conteudo, caminho_anexo, nome_destinatario, servidor):
+def enviarEmail(usuario, senha_usuario, assunto, destinatario, com_copia, conteudo, caminho_anexo, nome_destinatario, servidor, anexar):
     import os
     import smtplib
     # from email.message import EmailMessage
@@ -13,6 +13,7 @@ def enviarEmail(usuario, senha_usuario, assunto, destinatario, com_copia, conteu
     # configurar email, senha
     EMAIL_ADRESS = usuario
     EMAIL_PASSWORD = senha_usuario
+    POSSUI_ANEXO = anexar
 
     # Criando uma lista para imprimir um aquivo de retorno
     envio = {}
@@ -58,7 +59,7 @@ def enviarEmail(usuario, senha_usuario, assunto, destinatario, com_copia, conteu
             qtd_files = 0
 
         # Enviar email
-        if qtd_files > 0:
+        if qtd_files > 0 or POSSUI_ANEXO == 'nao':
             server.sendmail(msg['From'], msg['To'], msg.as_string())
             server.quit()
 
@@ -68,10 +69,15 @@ def enviarEmail(usuario, senha_usuario, assunto, destinatario, com_copia, conteu
         envio['email'] = destinatario
         envio['status'] = 'Enviado'
         if qtd_files == 0:
-            envio['status'] = 'Não Enviado'
-            envio['obs'] = 'Não foi enviado arquivo(s). Vefificar Diretório Informado'
-            print(
-                f'{"Email Enviado: NÃO":<30}  --  {assunto:<100}')
+            if POSSUI_ANEXO == 'nao':
+                envio['status'] = 'Enviado'
+                envio['obs'] = 'E-mail enviado com a opção sem anexo'
+                print(f'{"Email Enviado: SIM":<30}  --  {assunto:<100}')
+            else:
+                envio['status'] = 'Não Enviado'
+                envio['obs'] = 'Não foi enviado arquivo(s). Vefificar Diretório Informado'
+                print(
+                    f'{"Email Enviado: NÃO":<30}  --  {assunto:<100}')
         else:
             if qtd_files == 1:
                 envio['obs'] = f'{qtd_files} arquivo enviado'
