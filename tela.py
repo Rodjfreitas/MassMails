@@ -46,7 +46,7 @@ def janelaPrincipal():
         [sg.Text('Desenvolvido por Rodrigo Freitas', size=65, justification='center')]]    
     # Janela
     return sg.Window(
-            'Mass&Mails v3.0 - Disparador Massivo de E-mails', layout=layout, finalize=True)
+            'Mass&Mails v3.1 - Disparador Massivo de E-mails', layout=layout, finalize=True)
 
 
 def janelaprogresso():
@@ -68,7 +68,7 @@ def janelaitensEnviar():
         [sg.Text('Relação de Envios')],
         [sg.Output(size=(90, 30))],
         [sg.Button('Voltar')]]
-    return sg.Window('Mass&Mails v3.0 - Relação de E-mails à Enviar', layout=layout, finalize=True)
+    return sg.Window('Mass&Mails v3.1 - Relação de E-mails à Enviar', layout=layout, finalize=True)
 
 #Criar janelas
 janela1, janela2, janela3 = janelaPrincipal(), None, None
